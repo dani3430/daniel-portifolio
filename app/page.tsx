@@ -1,19 +1,29 @@
-import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { About } from "@/components/sections/about";
+import { Hero } from "@/components/sections/hero";
+import { Skills } from "@/components/sections/skills";
+import { Navbar } from "@/components/layout/navbar";
+import { Projects } from "@/components/sections/projects";
+import { Experience } from "@/components/sections/experience";
+import { Blog } from "@/components/sections/blog";
+import { Contact } from "@/components/sections/contact";
+import { Footer } from "@/components/layout/footer";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="flex flex-col items-center gap-6 text-center">
-        <h1 className="text-3xl font-bold text-foreground">
-          Daniel Temesgen
-        </h1>
+    <>
+      <Navbar />
 
-        <p className="text-foreground/70">
-          Theme system test
-        </p>
-
-        <ThemeToggle />
-      </div>
-    </main>
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+         <Projects /> 
+         <Experience />
+          <Blog />
+           <Contact />
+      </main>
+      
+        <Footer />
+    </>
   );
 }
