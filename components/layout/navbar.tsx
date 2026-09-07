@@ -25,7 +25,7 @@ export function Navbar() {
         </a>
 
         {/* Desktop navigation */}
-        <div className="hidden items-center gap-6 lg:flex">
+        <div className="hidden items-center gap-5 lg:flex">
           {navItems.map((item) => (
             <a
               key={item.href}
@@ -35,6 +35,27 @@ export function Navbar() {
               {item.label}
             </a>
           ))}
+
+          <a
+            href="/cv"
+         className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-slate-950 transition-all hover:-translate-y-0.5 hover:bg-primary-hover">
+     <svg
+    aria-hidden="true"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    className="h-4 w-4"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"
+    />
+    </svg>
+
+        Download CV
+    </a>
         </div>
 
         <div className="flex items-center gap-2">

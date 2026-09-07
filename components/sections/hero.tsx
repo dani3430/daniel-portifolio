@@ -39,22 +39,43 @@ export function Hero() {
             across the web and beyond.
           </p>
 
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-            <a
-              href="#projects"
-              className="inline-flex min-h-12 items-center justify-center rounded-xl bg-primary px-7 py-3 font-semibold text-slate-950 shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5 hover:bg-primary-hover hover:shadow-xl"
-            >
-              View My Work
-            </a>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+  <a
+    href="#projects"
+    className="inline-flex min-h-12 items-center justify-center rounded-xl bg-primary px-7 py-3 font-semibold text-slate-950 shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5 hover:bg-primary-hover hover:shadow-xl"
+  >
+    View My Work
+  </a>
 
-            <a
-              href="#contact"
-              className="inline-flex min-h-12 items-center justify-center rounded-xl border border-border bg-surface px-7 py-3 font-semibold text-foreground transition-all hover:-translate-y-0.5 hover:bg-surface-muted"
-            >
-              Let&apos;s Talk
-            </a>
-          </div>
+  <a
+    href="#contact"
+    className="inline-flex min-h-12 items-center justify-center rounded-xl border border-border bg-surface px-7 py-3 font-semibold text-foreground transition-all hover:-translate-y-0.5 hover:bg-surface-muted"
+  >
+    Let&apos;s Talk
+  </a>
 
+  <a
+    href="/cv"
+    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-primary/30 bg-primary/5 px-7 py-3 font-semibold text-primary transition-all hover:-translate-y-0.5 hover:border-primary hover:bg-primary/10"
+  >
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      className="h-4 w-4"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"
+      />
+    </svg>
+
+    Download CV
+  </a>
+</div>
           <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm text-foreground/50">
             <span>Next.js</span>
             <span>TypeScript</span>
