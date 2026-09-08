@@ -125,3 +125,21 @@ export async function updateProject(
   revalidatePath(`/admin/projects/${projectId}/edit`);
   revalidatePath("/");
 }
+export async function deleteProject(projectId: string) {
+  const session = await auth();
+
+  if (!session?.user) {
+    throw new Error("Unauthorized");
+  }
+
+  await connectToDatabase();
+
+  const project = await Project.findByIdAndDelete(projectId);
+
+  if (!project) {
+    throw new Error("Project not found.");
+  }
+
+  revalidatePath("/admin/projects");
+  revalidatePath("/");
+}
