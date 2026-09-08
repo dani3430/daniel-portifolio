@@ -2,6 +2,7 @@ import { auth } from "@/auth";
 import { connectToDatabase } from "@/lib/mongodb";
 import { Project } from "@/lib/models/project";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 
 export default async function AdminProjectsPage() {
   const session = await auth();
@@ -95,9 +96,18 @@ export default async function AdminProjectsPage() {
                     )}
                   </div>
 
-                  <div className="shrink-0 text-sm text-foreground/50">
-                    Order: {project.order}
-                  </div>
+                  <div className="flex shrink-0 items-center gap-4">
+  <span className="text-sm text-foreground/50">
+    Order: {project.order}
+  </span>
+
+  <Link
+    href={`/admin/projects/${project._id.toString()}/edit`}
+    className="rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary/40 hover:text-primary"
+  >
+    Edit
+  </Link>
+</div>
                 </div>
               ))}
             </div>
