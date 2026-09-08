@@ -1,8 +1,9 @@
+import Link from "next/link";
 import { auth } from "@/auth";
 import { connectToDatabase } from "@/lib/mongodb";
 import { Project } from "@/lib/models/project";
 import { redirect } from "next/navigation";
-import Link from "next/link";
+import { deleteProject } from "./actions";
 
 export default async function AdminProjectsPage() {
   const session = await auth();
@@ -35,12 +36,12 @@ export default async function AdminProjectsPage() {
             </p>
           </div>
 
-          <button
-            type="button"
-            className="min-h-11 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-slate-950 transition-colors hover:bg-primary-hover"
+          <Link
+            href="/admin/projects/new"
+            className="inline-flex min-h-11 items-center justify-center rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-slate-950 transition-colors hover:bg-primary-hover"
           >
             Add Project
-          </button>
+          </Link>
         </div>
 
         <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
@@ -84,7 +85,7 @@ export default async function AdminProjectsPage() {
 
                     {project.technologies.length > 0 && (
                       <div className="mt-3 flex flex-wrap gap-2">
-                       {project.technologies.map((technology: string) => (
+                        {project.technologies.map((technology: string) => (
                           <span
                             key={technology}
                             className="rounded-lg bg-background px-2.5 py-1 text-xs text-foreground/60"
@@ -96,18 +97,32 @@ export default async function AdminProjectsPage() {
                     )}
                   </div>
 
-                  <div className="flex shrink-0 items-center gap-4">
-  <span className="text-sm text-foreground/50">
-    Order: {project.order}
-  </span>
+                  <div className="flex shrink-0 flex-wrap items-center gap-3">
+                    <span className="text-sm text-foreground/50">
+                      Order: {project.order}
+                    </span>
 
-  <Link
-    href={`/admin/projects/${project._id.toString()}/edit`}
-    className="rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary/40 hover:text-primary"
-  >
-    Edit
-  </Link>
-</div>
+                    <Link
+                      href={`/admin/projects/${project._id.toString()}/edit`}
+                      className="rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary/40 hover:text-primary"
+                    >
+                      Edit
+                    </Link>
+
+                    <form
+                      action={deleteProject.bind(
+                        null,
+                        project._id.toString(),
+                      )}
+                    >
+                      <button
+                        type="submit"
+                        className="rounded-lg border border-red-500/30 px-3 py-2 text-sm font-medium text-red-600 transition-colors hover:bg-red-500/10 dark:text-red-400"
+                      >
+                        Delete
+                      </button>
+                    </form>
+                  </div>
                 </div>
               ))}
             </div>
